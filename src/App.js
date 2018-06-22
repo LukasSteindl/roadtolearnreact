@@ -33,7 +33,10 @@ class App extends Component {
   }
 
 
- 
+  onChange =(event)=>
+  {
+    console.log("changed!" + event.target.value);
+  } 
 
   render() {
     const text = 'hallo welt!';
@@ -42,12 +45,12 @@ class App extends Component {
 
     };
 
-  const Search = ({children}) => { return (<form> Search{children} <input type="text"/></form>)}
+  const Search = ({children, onChange}) => { return (<form> Search{children} <input type="text" onChange={onChange}/></form>)}
 
     return (
       <div className="App">
         <h1>{text}{complexObject.javaobject}</h1>
-        <Search>filterxy</Search>
+        <Search onChange={this.onChange}>filterxy</Search>
         {
           this.state.list.map(item => 
           <div key ={item.id}>
