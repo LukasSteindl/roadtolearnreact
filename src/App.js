@@ -14,17 +14,17 @@ class App extends Component {
       {id:2, name:'jack'}
     ]
     this.state = {
-      list: list,
+      list: list ,
     }
   }
 
 
   checkfilter = (currentid,idtodelete) => 
   {
-    return currentid !== idtodelete 
+    return currentid !== idtodelete
   }
 
-  hallo = (id) => 
+  hallo = (id ) => 
   {
     console.log(this);
     console.log('hallo!!' + id);
@@ -32,7 +32,7 @@ class App extends Component {
     this.setState({list:filteredList});
   }
 
-
+//test
   onChange =(event)=>
   {
     console.log("changed!" + event.target.value);
