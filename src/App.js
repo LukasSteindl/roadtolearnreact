@@ -36,9 +36,8 @@ class App extends Component {
   onChange =(event)=>
   {
     console.log("changed!" + event.target.value);
-    this.setState({
-      searchTerm: event.target.value,
-    })
+
+    this.setState({searchTerm: event.target.value});
   } 
 
   onDelete = (id)=>

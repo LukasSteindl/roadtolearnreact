@@ -11,7 +11,7 @@ class NewsPanel extends Component {
              <div>
                 <h1>News</h1>
                 <Search onChange={this.props.onChange} searchTerm={this.props.searchTerm}>filterxy</Search>
-                <Table result = {this.props.result} onDelete={this.props.onDelete}/>
+                <Table result = {this.props.result} searchTerm={this.props.searchTerm} onDelete={this.props.onDelete}/>
              </div>
         )
     }
