@@ -9,11 +9,11 @@ class Table extends Component {
 
   render () {
     return (
-      this.props.result.hits.map(item =>
-        <div key = {item.objectID}>
-            <Row item = {item}/>
-        </div>
-      )
+      <div key='table1'>
+        {
+          this.props.result.hits.map(item => <Row item = {item} onDelete={this.props.onDelete}/>)
+        }
+      </div>
     )
   }
 }

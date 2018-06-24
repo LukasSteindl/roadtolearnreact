@@ -26,6 +26,13 @@ class App extends Component {
   }
 
 
+    
+  checkfilter = (currentid,idtodelete) => 
+  {
+    return currentid !== idtodelete
+  }
+
+
   onChange =(event)=>
   {
     console.log("changed!" + event.target.value);
@@ -34,12 +41,25 @@ class App extends Component {
     })
   } 
 
+  onDelete = (id)=>
+  {
+    console.log('Delete' + id);
+    
+    const filteredList = this.state.result.hits.filter((item)=> { return this.checkfilter(item.objectID,id)});
+    const resultcopy = this.state.result;
+    resultcopy.hits = filteredList
+    this.setState({result: resultcopy});
+  }
+
   setSearchTopStories = (result) => 
   {
+    console.log('setsearchresult');
+    console.log(result);
     this.setState({result});
   }
 
   componentDidMount(){
+    console.log('component mounted');
     const {searchTerm} = this.state;
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`).then(response=> response.json())
     .then(result => this.setSearchTopStories(result))
@@ -69,7 +89,12 @@ class App extends Component {
         </nav>
         <div>
           <Route path="/dashboard" component={Dashboard}/>
-          <Route path="/" exact render={()=>(<NewsPanel result = {this.state.result} onChange ={this.onChange} searchTerm={this.state.searchTerm}/>)}/>
+          <Route path="/" exact render={()=>(<NewsPanel 
+              result = {this.state.result} 
+              onChange ={this.onChange} 
+              searchTerm={this.state.searchTerm}
+              onDelete = {this.onDelete}
+              />)}/>
         </div>
       </div>
     );
