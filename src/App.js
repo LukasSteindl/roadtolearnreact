@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
+import Table from './components/table';
 
 const DEFAULT_QUERY = 'redux';
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
@@ -65,8 +66,14 @@ class App extends Component {
       javaobject: 'json text'
 
     };
-    if (!result) {return null;}
+
+    //wichtig dass beim ersten rendern bereits die daten geladen wurden sonst soll nichts gezeichnet werden!
+    if (!result) {
+      console.log('result empty');
+      return null;}
     console.log(result.hits);
+
+
   const Search = ({children, onChange}) => { return (<form> Search{children} <input type="text" onChange={onChange}/></form>)}
 
 
@@ -84,7 +91,7 @@ class App extends Component {
           )
           
         }
-
+       <Table result = {this.state.result}/>
        
       
       </div>
