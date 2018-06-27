@@ -57,12 +57,29 @@ class App extends Component {
     this.setState({result});
   }
 
+
+  callApi = async () => {
+    const response = await fetch('/api/hello');
+    const body = await response.json();
+
+    if (response.status !== 200) throw Error(body.message);
+
+    return body;
+  };
+
   componentDidMount(){
     console.log('component mounted');
     const {searchTerm} = this.state;
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`).then(response=> response.json())
     .then(result => this.setSearchTopStories(result))
     .catch(error => error);
+
+    this.callApi()
+    .then(res => {
+      this.setState({ response: res.express })
+      console.log('output of express api call..' + res.express);
+      })
+    .catch(err => console.log('error calling express service:' + err));
   }
 
 
@@ -82,6 +99,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1> {this.state.response}</h1>
         <nav>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/">Home</Link>
