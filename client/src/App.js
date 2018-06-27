@@ -67,6 +67,11 @@ class App extends Component {
     return body;
   };
 
+  Login = () => {
+    
+
+  };
+
   componentDidMount(){
     console.log('component mounted');
     const {searchTerm} = this.state;
@@ -100,6 +105,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1> {this.state.response}</h1>
+        <button onClick={this.Login}>Login</button>
+
         <nav>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/">Home</Link>
