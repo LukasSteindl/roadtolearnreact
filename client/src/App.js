@@ -105,14 +105,15 @@ class App extends Component {
     return (
       <div className="App">
         <h1> {this.state.response}</h1>
-        <button onClick={this.Login}>Login</button>
-
+      
         <nav>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
         </nav>
         <div>
           <Route path="/dashboard" component={Dashboard}/>
+          <Route path="/login" component={Login}/>
           <Route path="/" exact render={()=>(<NewsPanel 
               result = {this.state.result} 
               onChange ={this.onChange} 
@@ -130,4 +131,13 @@ export default App;
 
 const Dashboard = () => (
   <div>My crazy Dashboard </div>
+)
+
+
+const Login = () => (
+  <div>
+    <h1>Login</h1>
+    <button onClick={this.Login}>Login</button>
+        <button onClick={this.Login}>Logout</button>
+  </div>
 )
