@@ -39,23 +39,24 @@
         </style>
     </head>
     <body>
-        <nav>
-            <ul>
-                <% if(user) { %>
-                <li><a href="/auth/logout">Logout</a></li>
-                <% } else { %>
-                <li><a href="/auth/login">Login</a></li>
-                <% }%>
-                <li><a href="/">Homepage</a></li>
-                <li><a href="/profile">Profile</a></li>
-            </ul>
-        </nav>
+            <nav>
+                    <ul>
+                        <% if(user) { %>
+                        <li><a href="/auth/logout">Logout</a></li>
+                        <% } else { %>
+                        <li><a href="/auth/login">Login</a></li>
+                        <% }%>
+                        <li><a href="/">Homepage</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                    </ul>
+                </nav>
         <header>
-            <h1>Net Ninja OAuth Tut's</h1>
-            <h2>Homepage</h2>
+            <h1>Welcome to your Profile, <%=user.username%></h1>
+            
         </header>
         <main>
-            <p>Probably the best OAuth tutorials on the planet :)</p>
+            <img src="<%= user.thumbnail %>"/>
+           extra information about you. 
         </main>
     </body>
 </html>
